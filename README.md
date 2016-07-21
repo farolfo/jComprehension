@@ -3,9 +3,9 @@ Build lists in mathematical set-builder notation with Java, like { x * 2 | x E {
 
 ### Introduction
 
-We may solve our problems using `for`+`if` statements in an imperative way, or by the usage of `map`+`filter` if we want to use a functional approach, but we have another powerfull way of solving these same problems: list comprehensions. List comprehensions are syntatic constructions that are used to build lists in many languages, such as Haskell, Python or Ruby, using the algebraic set-builder notation. This notation hasn't yet been added to the Java world, and is the intention of this library to do that.
+We may solve our problems using `for`+`if` statements in an imperative way, or by the usage of `map`+`filter` if we want to use a functional approach, but we have another powerful way of solving these same problems: list comprehensions. List comprehensions are syntatic constructions that are used to build lists in many languages, such as Haskell, Python or Ruby, using the algebraic set-builder notation. This notation hasn't yet been added to the Java world, and it is the intention of this library to do that.
 
-For example, let's suppose we want to get all the even numbers of a given list. In the algebra wolrd we would so with the set-builder notation like
+For example, let's suppose we want to get all the even numbers of a given list. In the algebra world we would so with the set-builder notation like
 ```
 { x | x E R ^ x is-even }
 ```
@@ -23,7 +23,7 @@ or
 Predicate<Integer> isEven = x -> x % 2 == 0;
 List<Integer> evens = list.stream().filter(isEven).collect(Collectors.toList());
 ```
-This tow approaches solve our problem, but now we can also do this with the List Comprehensions approach of jComprehension
+This two approaches solve our problem, but now we can also do this with the List Comprehensions approach of jComprehension
 ```java
 List<Integer> evens = new ListComprehension<Integer>()
   .suchThat(x -> {
@@ -32,13 +32,13 @@ List<Integer> evens = new ListComprehension<Integer>()
 });
 ```
 
-It's worth to say that the jComprehension implementation bring some SIGNIFICAT improvements regarding timing performance. This same code writter above was timed for a list of 100 millons elements and the time of execution was:
+It's worth saying that the jComprehension implementation brings some SIGNIFICANT improvements regarding timing performance. This same code written above was timed for a list of 100 millons elements and the time of execution was:
 ```
 for+if: 13.260 seconds
 stream().filter: 33.311 seconds (most of the time is consumed by the collector)
 jComprehension: 1.419 seconds
 ```
-These results may be caused by two main reasons: the jComprehension implementation lacks of `for`, `while` or `if` statements, it's only using stream functions like `stream().filter` and `stream().map`; the seconds reason is the HashSet data strcutures used in the code to build the list.
+These results may be caused by two main reasons: the jComprehension implementation lacks of `for`, `while` or `if` statements, it's only using stream functions like `stream().filter` and `stream().map`; the second reason is the HashSet data structures used in the code to build the list.
 
 ### API
 
@@ -48,8 +48,8 @@ The `ListComprehension` object exposes the following methods:
 
 * `List<T> suchThat(Consumer<Var> predicates)`: Builds the list of elements with the given predicates. See below to check the methods the `Var` object exposes.
 * `List<Pair<T, T>> suchThat(BiConsumer<Var, Var> predicates)`: Builds the list of pairs of elements with the given predicates. See below to check the methods the `Var` object exposes.
-* `ListComprehension<T> outputExpression(Function<T, T> resultTransformer)`: Sets an output expressios that will be applied to each element of the resultant list after validating the predicates.
-* `ListComprehension<T> outputExpression(BiFunction<T, T, ?> resultTransformer)`: Sets an output expressios that will be applied to each pair of elements of the resultant list after validating the predicates.
+* `ListComprehension<T> outputExpression(Function<T, T> resultTransformer)`: Sets an output expression that will be applied to each element of the resulting list after validating the predicates.
+* `ListComprehension<T> outputExpression(BiFunction<T, T, ?> resultTransformer)`: Sets an output expression that will be applied to each pair of elements of the resulting list after validating the predicates.
 
 When defining the predicates, we have to use a `Var` object in a lambda (`Predicate` or `BiPredicate`).
 The `Var` object exposes the following methods:
@@ -85,7 +85,7 @@ List<Integer> duplicated = new ListComprehension<Integer>()
 });
 ```
 
-Make the cartesian product of two lists and keep the pair of elements that hold that an element is the 2 times the other one: 
+Make the cartesian product of two lists and keep the pair of elements that hold that an element is 2 times the other one: 
 ```java
 // { (x,y) | x E {1,2,3} ^ y E {4,5,6} ^ 2 * x = y }
 
