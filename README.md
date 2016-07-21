@@ -3,7 +3,7 @@ Build lists in mathematical set-builder notation with Java, like { x * 2 | x E {
 
 ### Introduction
 
-We may solve our problems using `for`+`if` statements in an imperative way, or by the usage of `map`+`filter` if we want to use a functional approach, but we have another powerful way of solving these same problems: list comprehensions. List comprehensions are syntatic constructions that are used to build lists in many languages, such as Haskell, Python or Ruby, using the algebraic set-builder notation. This notation hasn't yet been added to the Java world, and it is the intention of this library to do that.
+We may solve our problems using `for`+`if` statements in an imperative way, or by the usage of `map`+`filter` if we want to use a functional approach, but we have another powerful way of solving these same problems: list comprehensions. List comprehensions are syntactic constructions that are used to build lists in many languages, such as Haskell, Python or Ruby, using the algebraic set-builder notation. This notation hasn't yet been added to the Java world, and it is the intention of this library to do that.
 
 For example, let's suppose we want to get all the even numbers of a given list. In the algebra world we would so with the set-builder notation like
 ```
@@ -32,7 +32,7 @@ List<Integer> evens = new ListComprehension<Integer>()
 });
 ```
 
-It's worth saying that the jComprehension implementation brings some SIGNIFICANT improvements regarding timing performance. This same code written above was timed for a list of 100 millons elements and the time of execution was:
+It's worth saying that the jComprehension implementation brings some SIGNIFICANT improvements regarding timing performance. This same code written above was timed for a list of 100 million elements and the time of execution was:
 ```
 for+if: 13.260 seconds
 stream().filter: 33.311 seconds (most of the time is consumed by the collector)
@@ -42,7 +42,7 @@ These results may be caused by two main reasons: the jComprehension implementati
 
 ### API
 
-In order to build a List as a List Comprehension you must instantiate a new `ListComprehension` object and call the `suchThat` method with the predicates you want the list to hold.
+In order to build a List as a List Comprehension, you must instantiate a new `ListComprehension` object and call the `suchThat` method with the predicates you want the list to hold.
 
 The `ListComprehension` object exposes the following methods:
 
