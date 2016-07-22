@@ -51,7 +51,7 @@ public class ListComprehensionPerfTest {
         List<Long> bigList = createBigList();
 
         long startTime = System.nanoTime();
-        List<Long> evens = new ArrayList<>();
+        List<Long> evens = new ArrayList<>(100000000);
         for (int i = 0; i < bigList.size(); i++) {
             if (bigList.get(i) % 2 == 0) {
                 evens.add(bigList.get(i));
@@ -66,7 +66,7 @@ public class ListComprehensionPerfTest {
     }
 
     private List<Long> createBigList(int cant) {
-        List l = new ArrayList<>();
+        List<Long> l = new ArrayList<>(cant);
         for (int i = 0; i<cant; i++) {
             l.add(Math.round(Math.random() * 70));
         }
