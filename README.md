@@ -32,14 +32,6 @@ List<Integer> evens = new ListComprehension<Integer>()
 });
 ```
 
-It's worth noting that the jComprehension implementation bring some SIGNFICANT performance improvements. The code above was tested against a list of 100 millons elements. The running times for the different approaches were:
-```
-for+if: 13.260 seconds
-stream().filter: 33.311 seconds (most of the time is consumed by the collector)
-jComprehension: 1.419 seconds
-```
-There are two main reasons for the differences: First, the jComprehension implementation lacks of `for`, `while` or `if` statements, it's only using stream functions like `stream().filter` and `stream().map`; the second reason is the HashSet data strcutures used in the code to build the list.
-
 ### API
 
 In order to build a List as a List Comprehension you must instantiate a new `ListComprehension` object and call the `suchThat` method with the predicates you want the list to hold.
