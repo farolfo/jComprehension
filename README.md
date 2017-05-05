@@ -1,4 +1,5 @@
-#![jComprehension](/logo.png)
+![jComprehension](/logo.png)
+
 Build lists in mathematical set-builder notation with Java, like { x * 2 | x E {1,2,3,4} ^ x is even }.
 
 ### Introduction
